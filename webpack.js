@@ -1,23 +1,49 @@
+const _ = require('lodash');
+const webpack = require('webpack');
 /*
  * Webpack Plugins
  */
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const packageSort = (a, b) => {
+    switch (a.names[0]) {
+        case 'polyfills':
+            return -1;
+        case 'main':
+            return 1;
+        case 'vendor':
+            return -1;
+        default:
+            return 1;
+    }
+}
 
 module.exports = {
+    debug: true,
+
     context: __dirname + '/src',
 
-    entry: 'core/main',
+    entry: {
+        'polyfills': './polyfills.ts',
+        'vendor': './vendor.ts',
+        'main': './main.ts'
+    },
+
+    modulesDirectories: ['node_modules'],
 
     output: {
-        filename: 'bundle.js',
-        path: '../dist'
+        filename: '[name].bundle.js',
+        sourceMapFilename: '[name].map',
+        path: '../dist',
+        chunkFilename: '[id].chunk.js'
     },
+
+    devtool: 'cheap-module-source-map',
 
     resolve: {
         extensions: [
-
+            '', '.ts', '.js'
         ]
     },
 
@@ -96,7 +122,7 @@ module.exports = {
          * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
          */
         new webpack.optimize.CommonsChunkPlugin({
-          name: helpers.reverse(['polyfills', 'vendor'])
+          name: ['vendor', 'polyfills']
         }),
 
         /*
@@ -107,10 +133,10 @@ module.exports = {
          *
          * See: https://www.npmjs.com/package/copy-webpack-plugin
          */
-        new CopyWebpackPlugin([{
-          from: 'src/assets',
-          to: 'assets'
-        }]),
+        // new CopyWebpackPlugin([{
+        //   from: 'src/assets',
+        //   to: 'assets'
+        // }]),
 
         /*
          * Plugin: HtmlWebpackPlugin
@@ -121,8 +147,20 @@ module.exports = {
          * See: https://github.com/ampedandwired/html-webpack-plugin
          */
         new HtmlWebpackPlugin({
-          template: 'src/index.html',
-          chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
+          title: 'Angular2 Todo',
+          showErrors: true,
+          chunksSortMode: packageSort
         })
-    ]
+    ],
+
+    devServer: {
+        port: '8080',
+        host: '127.0.0.1',
+        historyApiFallback: true,
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000
+        },
+        outputPath: './dist'
+    }
 }
