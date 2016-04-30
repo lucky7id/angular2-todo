@@ -1,0 +1,29 @@
+{
+  "name": "angular2-todo",
+  "version": "1.0.0",
+  "description": "A little experiment",
+  "main": "./dist/bundle.js",
+  "dependencies": {
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucky7id/angular2-todo.git"
+  },
+  "keywords": [
+    "angular2",
+    "typescript",
+    "es6"
+  ],
+  "author": "Brandon Thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucky7id/angular2-todo/issues"
+  },
+  "homepage": "https://github.com/lucky7id/angular2-todo#readme"
+}
