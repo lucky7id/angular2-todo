@@ -2,9 +2,9 @@ import {combineReducers, createStore, Store, applyMiddleware} from 'redux';
 import {Injectable, Inject, provide} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
 import thunk from 'redux-thunk';
-let rx = require('rx');
 import {ITodosState, todosReducer, addTodo} from './domain/todos/main';
 import {App} from './ui/main';
+import {} from 'rxjs';
 
 
 

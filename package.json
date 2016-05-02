@@ -3,11 +3,24 @@
   "version": "1.0.0",
   "description": "A little experiment",
   "main": "./dist/bundle.js",
-  "dependencies": {},
+  "dependencies": {
+    "angular2": "^2.0.0-beta.17",
+    "es6-promise": "^3.1.2",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.6",
+    "zone.js": "^0.6.12",
+    "core-js": "^2.3.0",
+    "redux": "^3.5.2",
+    "redux-immutable-state-invariant": "^1.2.3",
+    "redux-thunk": "^2.0.1",
+    "ts-helpers": "^1.1.1"
+  },
   "devDependencies": {
     "awesome-typescript-loader": "^0.17.0",
     "copy-webpack-plugin": "^2.1.3",
     "html-webpack-plugin": "^2.16.0",
+    "lodash": "^4.11.1",
     "typescript": "^1.9.0-dev.20160501",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
