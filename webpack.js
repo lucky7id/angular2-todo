@@ -88,8 +88,8 @@ module.exports = {
              */
             {
               test: /\.html$/,
-              loader: 'raw-loader',
-              exclude: ['./index.html']
+              loader: 'html-loader',
+              exclude: []
             }
         ]
     },
@@ -149,7 +149,8 @@ module.exports = {
         new HtmlWebpackPlugin({
           title: 'Angular2 Todo',
           showErrors: true,
-          chunksSortMode: packageSort
+          chunksSortMode: packageSort,
+          template: './index.html'
         })
     ],
 

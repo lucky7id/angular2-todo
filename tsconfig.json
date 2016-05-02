@@ -8,25 +8,37 @@
         "removeComments": true,
         "noLib": false,
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "moduleResolution": "node"
     },
     "filesGlob": [
         "./**/*.ts",
         "!./node_modules/**/*.ts",
-        "./src/typings/browser.d.ts"
+        "./typings/browser.d.ts",
+        "!./typings/main/**",
+        "!./typings/main.d.ts",
+        "./src/typings/custom.d.ts"
     ],
-    "exclude": [
-        "node_modules",
-        "bower_components"
-    ],
+    "exclude": [],
     "files": [
+        "./src/domain/todos/main.ts",
         "./src/main.ts",
         "./src/polyfills.ts",
+        "./src/typings/custom.d.ts",
+        "./src/ui/main.ts",
         "./src/vendor.ts",
         "./typings/browser.d.ts",
-        "./typings/main.d.ts"
+        "./typings/browser/ambient/es6-shim/index.d.ts",
+        "./typings/browser/ambient/lodash/index.d.ts",
+        "./typings/browser/ambient/redux-immutable-state-invariant/index.d.ts",
+        "./typings/browser/ambient/redux-promise/index.d.ts",
+        "./typings/browser/ambient/redux-thunk/index.d.ts",
+        "./typings/browser/ambient/redux/index.d.ts"
     ],
+    "compileOnSave": false,
+    "buildOnSave": false,
     "atom": {
-        "rewriteTsconfig": true
+        "rewriteTsconfig": true,
+        "formatOnSave": true
     }
 }
